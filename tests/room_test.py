@@ -46,7 +46,7 @@ class TestRoom(unittest.TestCase):
         self.room.increase_till(self.room.price)
         self.assertEqual(5, self.room.till)
 
-    def test_check_in_multiple_guests_within_capacity__True(self):
+    def test_check_in_multiple_guests_within_room_capacity__True(self):
         self.room_2.check_in_guest(self.guest_1)
         self.room_2.check_in_guest(self.guest_2)
         self.room_2.check_in_guest(self.guest_3)
@@ -56,7 +56,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(10, self.guest_2.wallet)
         self.assertEqual(30, self.guest_3.wallet)
 
-    def test_check_in_multiple_guests_within_capacity__False(self):
+    def test_check_in_multiple_guests_within_room_capacity__False(self):
         self.room_2.check_in_guest(self.guest_1)
         self.room_2.check_in_guest(self.guest_2)
         self.room_2.check_in_guest(self.guest_3)
