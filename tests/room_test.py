@@ -10,8 +10,9 @@ class TestRoom(unittest.TestCase):
         self.song_2 = Song("Sweet Caroline")
         self.song_3 = Song("Yesterday")
         self.song_list = [self.song_1, self.song_2]
-        self.guest_1 = Guest("Joe Bloggs")
-        self.guest_2 = Guest("Jane Doe")
+        self.guest_1 = Guest("Harry Tonedeaf")
+        self.guest_2 = Guest("Sheila Diva")
+        self.guest_3 = Guest("Larry Crooner")
         self.guest_list = [self.guest_1, self.guest_2]
         self.room = Room("Golden Oldie Room", self.song_list, self.guest_list)
 
@@ -24,9 +25,17 @@ class TestRoom(unittest.TestCase):
     def test_for_song_is_not_in_list(self):
         self.assertEqual(False, self.room.find_song(self.song_3))
 
-    def test_add_song_to_list(self):
-        self.room.add_song(self.song_3)
+    def test_add_song_to_room(self):
+        self.room.add_song_to_room(self.song_3)
         self.assertEqual(True, self.room.find_song(self.song_3))
 
     def test_number_of_guests_in_room(self):
-        self.assertEqual(2, self.room.guest_count())     
+        self.assertEqual(2, self.room.guest_count()) 
+
+    def test_check_in_guest(self):
+        self.room.check_in_guest(self.guest_3)
+        self.assertEqual(3, self.room.guest_count())
+
+    def test_check_out_guest(self):
+        self.room.check_out_guest(self.guest_1)
+        self.assertEqual(1, self.room.guest_count())
