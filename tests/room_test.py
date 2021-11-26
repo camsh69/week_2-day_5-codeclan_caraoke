@@ -10,11 +10,11 @@ class TestRoom(unittest.TestCase):
         self.song_2 = Song("Sweet Caroline")
         self.song_3 = Song("Yesterday")
         self.song_list = [self.song_1, self.song_2]
-        self.guest_1 = Guest("Harry Tonedeaf")
-        self.guest_2 = Guest("Sheila Diva")
-        self.guest_3 = Guest("Larry Crooner")
+        self.guest_1 = Guest("Harry Tonedeaf", 25)
+        self.guest_2 = Guest("Sheila Diva", 15)
+        self.guest_3 = Guest("Larry Crooner", 35)
         self.guest_list = [self.guest_1, self.guest_2]
-        self.room = Room("Golden Oldie Room", self.song_list, self.guest_list)
+        self.room = Room("Golden Oldie Room", self.song_list, self.guest_list, 4, 5.00)
 
     def test_room_has_name(self):
         self.assertEqual("Golden Oldie Room", self.room.name)

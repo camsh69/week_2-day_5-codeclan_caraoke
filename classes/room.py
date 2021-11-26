@@ -1,9 +1,12 @@
 class Room:
 
-    def __init__(self, name, songs, guests):
+    def __init__(self, name, songs, guests, max_guests, price):
         self.name = name
         self.songs = songs
         self.guests = guests
+        self.max_guests = max_guests
+        self.price = price
+        self.till = 0
 
     def guest_count(self):
         return len(self.guests)
