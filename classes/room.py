@@ -20,17 +20,16 @@ class Room:
     def add_song_to_room(self, song_name):
         self.songs.append(song_name)
 
-    def check_in_guest(self, guest_name):
-        self.guests.append(guest_name)
-
-    def check_out_guest(self, guest_name):
-        self.guests.remove(guest_name)
+    def check_out_guest(self, guest):
+        self.guests.remove(guest)
 
     def increase_till(self, amount):
         self.till += amount
 
-    def check_capacity_reached(self):
-        if len(self.guests) <= self.max_guests:
-            return False
-        return True
+    def check_in_guest(self, guest):
+        if self.guest_count() < self.max_guests:
+            self.guests.append(guest)
+            self.increase_till(self.price)
+            guest.reduce_wallet(self.price)
+        return f"Sorry, the maximum number of guests is {self.max_guests}"
 

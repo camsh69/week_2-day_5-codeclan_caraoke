@@ -15,10 +15,11 @@ class TestRoom(unittest.TestCase):
         self.guest_3 = Guest("Larry Crooner", 35)
         self.guest_4 = Guest("Tina Tuneless", 45)
         self.guest_list = [self.guest_1, self.guest_2]
-        self.room = Room("Golden Oldie Room", self.song_list, self.guest_list, 3, 5.00)
+        self.room = Room("Golden Oldies", self.song_list, self.guest_list, 3, 5)
+        self.room_2 = Room("Pop Classics", [], [], 3, 5)
 
     def test_room_has_name(self):
-        self.assertEqual("Golden Oldie Room", self.room.name)
+        self.assertEqual("Golden Oldies", self.room.name)
 
     def test_for_song_in_song_list__True(self):
         self.assertEqual(True, self.room.find_song(self.song_1))
@@ -45,10 +46,24 @@ class TestRoom(unittest.TestCase):
         self.room.increase_till(self.room.price)
         self.assertEqual(5, self.room.till)
 
-    def test_is_room_at_max_capacity__False(self):
-        self.assertEqual(False, self.room.check_capacity_reached())
+    def test_check_in_multiple_guests_within_capacity__True(self):
+        self.room_2.check_in_guest(self.guest_1)
+        self.room_2.check_in_guest(self.guest_2)
+        self.room_2.check_in_guest(self.guest_3)
+        self.assertEqual(3, self.room_2.guest_count())
+        self.assertEqual(15, self.room_2.till)
+        self.assertEqual(20, self.guest_1.wallet)
+        self.assertEqual(10, self.guest_2.wallet)
+        self.assertEqual(30, self.guest_3.wallet)
 
-    def test_is_room_at_max_capacity__True(self):
-        self.room.check_in_guest(self.guest_3)
-        self.room.check_in_guest(self.guest_4)
-        self.assertEqual(True, self.room.check_capacity_reached())
+    def test_check_in_multiple_guests_within_capacity__False(self):
+        self.room_2.check_in_guest(self.guest_1)
+        self.room_2.check_in_guest(self.guest_2)
+        self.room_2.check_in_guest(self.guest_3)
+        self.assertEqual("Sorry, the maximum number of guests is 3", self.room_2.check_in_guest(self.guest_4))
+        self.assertEqual(3, self.room_2.guest_count())
+        self.assertEqual(15, self.room_2.till)
+        self.assertEqual(20, self.guest_1.wallet)
+        self.assertEqual(10, self.guest_2.wallet)
+        self.assertEqual(30, self.guest_3.wallet)
+        self.assertEqual(45, self.guest_4.wallet)
