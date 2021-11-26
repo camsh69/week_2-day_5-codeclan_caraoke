@@ -14,11 +14,11 @@ class Room:
     def find_song(self, song_name):
         for song in self.songs:
             if song == song_name:
-                return True
+              return True
         return False
 
-    def add_song_to_room(self, song_name):
-        self.songs.append(song_name)
+    def add_song_to_room(self, song):
+        self.songs.append(song)
 
     def check_out_guest(self, guest):
         self.guests.remove(guest)
