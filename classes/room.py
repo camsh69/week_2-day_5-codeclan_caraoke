@@ -25,3 +25,6 @@ class Room:
 
     def check_out_guest(self, guest_name):
         self.guests.remove(guest_name)
+
+    def increase_till(self, amount):
+        self.till += amount

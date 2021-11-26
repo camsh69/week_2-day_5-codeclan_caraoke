@@ -39,3 +39,10 @@ class TestRoom(unittest.TestCase):
     def test_check_out_guest(self):
         self.room.check_out_guest(self.guest_1)
         self.assertEqual(1, self.room.guest_count())
+
+    def test_can_increase_till(self):
+        self.room.increase_till(self.room.price)
+        self.assertEqual(5, self.room.till)
+
+    def test_is_room_at_max_capacity__False(self):
+        self.assertEqual(False, self.room.check_capacity())
