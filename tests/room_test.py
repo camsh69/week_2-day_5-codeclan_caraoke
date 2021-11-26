@@ -16,4 +16,7 @@ class TestRoom(unittest.TestCase):
 
     def test_room_has_name(self):
         self.assertEqual("Golden Oldie Room", self.room.name)
+
+    def test_number_of_guests_in_room(self):
+            self.assertEqual(2, self.room.guest_count())
         
