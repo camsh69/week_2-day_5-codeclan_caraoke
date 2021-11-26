@@ -12,5 +12,8 @@ class Room:
         for song in self.songs:
             if song == song_name:
                 return True
-            return False
+        return False
+
+    def add_song(self, song_name):
+        self.songs.append(song_name)
 

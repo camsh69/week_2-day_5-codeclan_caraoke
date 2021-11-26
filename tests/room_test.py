@@ -24,8 +24,9 @@ class TestRoom(unittest.TestCase):
     def test_for_song_is_not_in_list(self):
         self.assertEqual(False, self.room.find_song(self.song_3))
 
-    def test_number_of_guests_in_room(self):
-        self.assertEqual(2, self.room.guest_count())
+    def test_add_song_to_list(self):
+        self.room.add_song(self.song_3)
+        self.assertEqual(True, self.room.find_song(self.song_3))
 
-    
-        
+    def test_number_of_guests_in_room(self):
+        self.assertEqual(2, self.room.guest_count())     
