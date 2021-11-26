@@ -13,8 +13,9 @@ class TestRoom(unittest.TestCase):
         self.guest_1 = Guest("Harry Tonedeaf", 25)
         self.guest_2 = Guest("Sheila Diva", 15)
         self.guest_3 = Guest("Larry Crooner", 35)
+        self.guest_4 = Guest("Tina Tuneless", 45)
         self.guest_list = [self.guest_1, self.guest_2]
-        self.room = Room("Golden Oldie Room", self.song_list, self.guest_list, 4, 5.00)
+        self.room = Room("Golden Oldie Room", self.song_list, self.guest_list, 3, 5.00)
 
     def test_room_has_name(self):
         self.assertEqual("Golden Oldie Room", self.room.name)
@@ -45,4 +46,9 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(5, self.room.till)
 
     def test_is_room_at_max_capacity__False(self):
-        self.assertEqual(False, self.room.check_capacity())
+        self.assertEqual(False, self.room.check_capacity_reached())
+
+    def test_is_room_at_max_capacity__True(self):
+        self.room.check_in_guest(self.guest_3)
+        self.room.check_in_guest(self.guest_4)
+        self.assertEqual(True, self.room.check_capacity_reached())

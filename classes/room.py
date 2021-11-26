@@ -28,3 +28,9 @@ class Room:
 
     def increase_till(self, amount):
         self.till += amount
+
+    def check_capacity_reached(self):
+        if len(self.guests) <= self.max_guests:
+            return False
+        return True
+
