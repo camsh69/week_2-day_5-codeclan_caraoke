@@ -19,10 +19,10 @@ class TestRoom(unittest.TestCase):
     def test_room_has_name(self):
         self.assertEqual("Golden Oldie Room", self.room.name)
 
-    def test_for_song_in_song_list(self):
+    def test_for_song_in_song_list__True(self):
         self.assertEqual(True, self.room.find_song(self.song_1))
 
-    def test_for_song_is_not_in_list(self):
+    def test_for_song_in_song_list__False(self):
         self.assertEqual(False, self.room.find_song(self.song_3))
 
     def test_add_song_to_room(self):
