@@ -20,9 +20,6 @@ class Room:
     def add_song_to_room(self, song):
         self.songs.append(song)
 
-    def check_out_guest(self, guest):
-        self.guests.remove(guest)
-
     def increase_till(self, amount):
         self.till += amount
 
@@ -33,3 +30,8 @@ class Room:
             guest.reduce_wallet(self.price)
         return f"Sorry, the maximum number of guests is {self.max_guests}"
 
+    def check_out_guest(self, guest, bar_tab_amount):
+        if bar_tab_amount != None:
+            self.increase_till(bar_tab_amount)
+            guest.reduce_wallet(bar_tab_amount)
+        self.guests.remove(guest)

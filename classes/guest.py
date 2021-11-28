@@ -11,3 +11,4 @@ class Guest:
     def fav_song_on_list(self, fav_song, room):
         if room.find_song(fav_song) != False:
             return "Woohoo!"
+        return "You don't have my favourite song"

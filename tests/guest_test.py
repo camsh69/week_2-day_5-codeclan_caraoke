@@ -20,3 +20,6 @@ class TestGuest(unittest.TestCase):
 
     def test_fav_song_on_list(self):
         self.assertEqual("Woohoo!", self.guest.fav_song_on_list(self.guest.fav_song, self.room))
+    
+    def test_fav_song_is_not_on_list(self):
+        self.assertEqual("You don't have my favourite song", self.guest.fav_song_on_list("Bohemian Rhapsody", self.room))
