@@ -1,12 +1,17 @@
 import unittest
 from classes.bar_tab import BarTab
-from classes.guest import Guest
 
 class TestBarTab(unittest.TestCase):
     
     def setUp(self):
-        self.guest = Guest("Joe Bloggs", 10, "I Will Survive")
-        self.bar_tab = BarTab(self.guest.name, 5)
+        self.bar_tab = BarTab("Joe Bloggs", 0)
 
     def test_bar_tab_has_guest_name(self):
         self.assertEqual("Joe Bloggs", self.bar_tab.guest)
+
+    def test_bar_tab_has_amount(self):
+        self.assertEqual(0, self.bar_tab.amount)
+
+    def test_bar_tab_amount_can_be_increased(self):
+        self.bar_tab.increase_bar_tab(5)
+        self.assertEqual(5, self.bar_tab.amount)
