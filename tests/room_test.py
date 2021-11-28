@@ -6,14 +6,14 @@ from classes.guest import Guest
 class TestRoom(unittest.TestCase):
     
     def setUp(self):
-        self.song_1 = Song("I will survive")
+        self.song_1 = Song("I Will Survive")
         self.song_2 = Song("Sweet Caroline")
         self.song_3 = Song("Yesterday")
         self.song_list = [self.song_1, self.song_2]
-        self.guest_1 = Guest("Harry Tonedeaf", 25)
-        self.guest_2 = Guest("Sheila Diva", 15)
-        self.guest_3 = Guest("Larry Crooner", 35)
-        self.guest_4 = Guest("Tina Tuneless", 45)
+        self.guest_1 = Guest("Harry Tonedeaf", 25, "Bohemian Rhapsody")
+        self.guest_2 = Guest("Sheila Diva", 15, "My Heart Will Go On")
+        self.guest_3 = Guest("Larry Crooner", 35, "Suspicious Minds")
+        self.guest_4 = Guest("Tina Tuneless", 45, "I Will Survive")
         self.guest_list = [self.guest_1, self.guest_2]
         self.room = Room("Golden Oldies", self.song_list, self.guest_list, 3, 5)
         self.room_2 = Room("Pop Classics", [], [], 3, 5)
